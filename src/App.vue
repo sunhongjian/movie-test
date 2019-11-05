@@ -3,7 +3,7 @@
     <img src="./assets/logo.png">
     <div>
       <p>
-        If Element is successfully added to this project, you'll see an
+        If Element is successfully added to this project, you'll see an11
         <code v-text="'<el-button>'"></code>
         below
       </p>

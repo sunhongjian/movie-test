@@ -3,6 +3,19 @@
     <div id="web_bg"></div>
     <div class="nav-layout">
       <div class="logo"></div>
+      <div class="nav-main">
+        <div class="nav-item">首页</div>
+        <div class="nav-item">渲染农场</div>
+        <div class="nav-item">流程管理</div>
+        <div class="nav-item">云网盘</div>
+        <div class="nav-item">云审片</div>
+        <div class="nav-item">云桌面</div>
+      </div>
+      <div class="nav-right">
+        <div class="icon-news"></div>
+        <div class="icon-news-text">未登录</div>
+        <div class="icon-xl"></div>
+      </div>
     </div>
     <div class="main-layout">
       <div class="flex-item">
@@ -57,12 +70,8 @@ export default {
     return {
       form: {},
       rules: {
-        name: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-        ],
-        password: [
-          { required: true, message: "请输入密码", trigger: "change" }
-        ]
+        name: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "change" }]
       }
     };
   },
@@ -89,7 +98,7 @@ export default {
 }
 @media screen and (max-width: 1500px) {
   .wrapper {
-    /* zoom: 0.75; */
+    zoom: 0.75;
   }
 }
 .diy-btn {
@@ -108,6 +117,44 @@ export default {
 .nav-layout {
   display: flex;
   padding: 25px 50px;
+}
+.nav-right {
+  display: flex;
+}
+.nav-right .icon-news {
+   background-image: url("../assets/icon_news@2x.png");
+  width: 16px;
+  height: 20px;
+  background-size: 16px auto;
+  background-repeat: no-repeat; 
+}
+.nav-right .icon-news-text {
+  color: #fff;
+  margin: 0 20px;
+}
+.nav-right .icon-xl {
+  margin-top: 8px;
+   background-image: url("../assets/icon_xl@2x.png");
+  width: 12px;
+  height: 6px;
+  background-size: 12px auto;
+  background-repeat: no-repeat; 
+}
+
+.nav-main {
+  display: flex;
+  flex: 1;
+  padding: 0 400px;
+}
+.nav-main .nav-item {
+  color: #fff;
+  font-size: 18px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 25px;
+  flex: 1;
+  opacity: 0.5;
 }
 .nav-layout .logo {
   background-image: url("../assets/logo1@2x.png");

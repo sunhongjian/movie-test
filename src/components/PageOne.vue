@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
     <div id="web_bg"></div>
+    <div class="nav-layout">
+      <div class="logo"></div>
+    </div>
     <div class="main-layout">
       <div class="flex-item">
         <div class="title"></div>
@@ -18,14 +21,28 @@
               class="text-b"
             >Welcome everyone to use the Chinese movie cloud.We hope you feel the best experience！</div>
             <div class="form-layout">
-              <el-form ref="form" :model="form" label-width="80px" label-position="top">
-                <el-form-item label="用户账号">
-                  <el-input v-model="form.name"></el-input>
+              <el-form
+                ref="form"
+                :model="form"
+                :rules="rules"
+                label-width="80px"
+                label-position="top"
+              >
+                <el-form-item label="用户账号" prop="name">
+                  <el-input v-model="form.name" placeholder="请输入用户账号"></el-input>
                 </el-form-item>
-                <el-form-item label="账号密码">
-                  <el-input v-model="form.name"></el-input>
+                <el-form-item label="账号密码" prop="password">
+                  <el-input v-model="form.password" placeholder="请输入账号密码"></el-input>
                 </el-form-item>
               </el-form>
+              <div style="overflow: hidden; margin-top: 10px">
+                <div style="float: left">
+                  立即
+                  <span style="color: #3E3EFFFF">注册</span>
+                </div>
+                <div style="float: right; color:rgba(0,0,0,0.5);">忘记密码</div>
+              </div>
+              <el-button class="diy-btn" round @click="login">立即登录</el-button>
             </div>
           </div>
         </div>
@@ -38,8 +55,27 @@
 export default {
   data() {
     return {
-      form: {}
+      form: {},
+      rules: {
+        name: [
+          { required: true, message: "请输入用户名", trigger: "blur" },
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "change" }
+        ]
+      }
     };
+  },
+  methods: {
+    login() {
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          return false;
+        }
+      });
+    }
   }
 };
 </script>
@@ -48,13 +84,37 @@ export default {
 .el-form--label-top .el-form-item__label {
   padding: 0 !important;
 }
+.el-form-item {
+  /* margin-bottom: 5px !important; */
+}
 @media screen and (max-width: 1500px) {
   .wrapper {
     /* zoom: 0.75; */
   }
 }
+.diy-btn {
+  margin-top: 40px !important;
+  /* background: inherit; */
+  background-image: url("../assets/juxing@2x.png") !important;
+  border: none !important;
+  width: 345px !important;
+  height: 77px !important;
+  background-size: 345px auto !important;
+  background-repeat: no-repeat !important;
+  color: #fff !important;
+}
 .wrapper {
+}
+.nav-layout {
   display: flex;
+  padding: 25px 50px;
+}
+.nav-layout .logo {
+  background-image: url("../assets/logo1@2x.png");
+  width: 164px;
+  height: 45px;
+  background-size: 164px auto;
+  background-repeat: no-repeat;
 }
 #web_bg {
   background-image: url("../assets/VCG41184067742@2x.png");
@@ -120,8 +180,6 @@ export default {
   opacity: 0.7;
 }
 .right-layout .text-a {
-  width: 150px;
-  height: 42px;
   font-size: 30px;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -129,8 +187,6 @@ export default {
   line-height: 42px;
 }
 .right-layout .text-b {
-  width: 313px;
-  height: 40px;
   font-size: 14px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
@@ -138,7 +194,7 @@ export default {
   line-height: 20px;
 }
 .right-layout .form-layout {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .left-layout .text-a {
   font-size: 40px;

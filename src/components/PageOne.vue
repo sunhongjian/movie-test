@@ -144,7 +144,7 @@ export default {
 .nav-main {
   display: flex;
   flex: 1;
-  padding: 0 400px;
+  padding: 0 10%;
 }
 .nav-main .nav-item {
   color: #fff;
@@ -155,6 +155,7 @@ export default {
   line-height: 25px;
   flex: 1;
   opacity: 0.5;
+  text-align: center;
 }
 .nav-layout .logo {
   background-image: url("../assets/logo1@2x.png");
